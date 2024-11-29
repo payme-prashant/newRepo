@@ -102,7 +102,7 @@ export const getStatusData1 = (tokenValue) => {
     },
   });
 };
-export const getStatusData = () => {
+export const getStatusData = (tokenvalue) => {
   let url = `${PAYME_API_ENDPOINT}/api/jwt-auth/get-basic-info-by-token/`;
   return axios
       .get(url, {

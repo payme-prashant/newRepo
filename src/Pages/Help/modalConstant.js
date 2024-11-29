@@ -1,0 +1,12 @@
+export const  payme_adhar_list = [ "Identity verification " , "Access to essential information" , "Reducing duplicates"];
+export const payme_adhar_description = "Why do we need your Aadhaar?";
+export const payme_heading = "For Verify your Aadhar";
+export const  payme_pan_list = [ "Identifies your financial transactions " , "Safeguards against fraud " ];
+export const payme_pan_description = "Why do we need your PAN?";
+export const payme_pan_heading = "For provide your PAN:";
+export const  payme_bank_list = [ "Secure fund transfers " , "Faster Processing " ];
+export const payme_bank_description = "Why do we require your bank details?";
+export const payme_bank_heading = "For provide your PAN:";
+//export const  payme_selfie_list = [ "Proper well lit environment " , "Background should be plain", "Your face should be frame" ];
+export const payme_selfie_list  =  [ "Proper well lit surroundings" , "Background should be plain", "Your face should fill the frame" ];
+export const payme_selfie_heading = " Instructions for Live Selfie";

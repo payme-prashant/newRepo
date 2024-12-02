@@ -211,7 +211,14 @@ const ProvidePan = () => {
               <label className="label">Enter your DOB</label>
               <FaCalendar />
             </div>
-
+             <div className="input-wrapper">
+              <input className="input" name="pan" type="text" data-testid="pan" placeholder=" " value={pan} onChange={(e) => {
+                if (e.target.value?.match(alphaNumeric)) {
+                  setPan(e.target.value.toUpperCase().slice(0, 10))
+                }
+              }}  disabled/>
+              <label className="label">Enter your PAN</label>
+            </div>
             {(isRequiredFatherName && type === "pan") && <><h2>Father Name</h2>
               <div className="input-wrapper">
                 <input className="input" name="pan" type="text" data-testid="pan" placeholder=" " value={fatheName} onChange={(e) => {

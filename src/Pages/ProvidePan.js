@@ -30,6 +30,7 @@ const ProvidePan = () => {
   const[dob,setDob]=useState(null)
   const [dateValue, setDateValue] = useState(false);
   const [pan, setPan] = useState("")
+  const [ckyc, setCkyc] = useState("")
   const [isRequiredFatherName, setIsRequiredFatherName] = useState(false)
   const [fatheName, setfatherName] = useState("")
 
@@ -176,9 +177,7 @@ const ProvidePan = () => {
 
   return (
     <>
-      {
-        (loader) ? <Loader /> : null
-      }
+      {loader ? <Loader /> : null}
       <section className="provide-pan">
         <Header heading="Provide your PAN" />
         <div className="container">
@@ -194,55 +193,110 @@ const ProvidePan = () => {
           <div className="mid-section">
             <h2>Your PAN</h2>
             <div className="input-wrapper">
-              <input className="input" name="pan" type="text" data-testid="pan" placeholder=" " value={pan} onChange={(e) => {
-                if (e.target.value?.match(alphaNumeric)) {
-                  setPan(e.target.value.toUpperCase().slice(0, 10))
-                }
-              }}  disabled/>
+              <input
+                className="input"
+                name="pan"
+                type="text"
+                data-testid="pan"
+                placeholder=" "
+                value={pan}
+                onChange={(e) => {
+                  if (e.target.value?.match(alphaNumeric)) {
+                    setPan(e.target.value.toUpperCase().slice(0, 10));
+                  }
+                }}
+                disabled
+              />
               <label className="label">Enter your PAN</label>
             </div>
             <h2>Your date of birth</h2>
-            <div   onClick={openDatePicker} className="input-wrapper">
+            <div onClick={openDatePicker} className="input-wrapper">
               <input
                 data-testid="open-date-picker"
                 className="input"
                 type=""
                 placeholder=" "
-               
                 value={dob ? moment(dob).format("DD-MM-YYYY") : ""}
-              
               />
               <label className="label">Enter your DOB</label>
               <FaCalendar />
             </div>
-
-            {(isRequiredFatherName && type === "pan") && <><h2>Father Name</h2>
-              <div className="input-wrapper">
-                <input className="input" name="pan" type="text" data-testid="pan" placeholder=" " value={fatheName} onChange={(e) => {
-                  if (e.target.value?.match(textOnly)) {
-                    setfatherName(e.target.value.slice(0, 70))
+            <h2>
+              CKYC Number{" "}
+              <span class="optional" >(optional)</span>
+            </h2>
+            <div className="input-wrapper">
+              <input
+                className="input"
+                name="ckyc"
+                type="number"
+                data-testid="ckyc"
+                placeholder=" "
+                value={ckyc}
+                onChange={(e) => {
+                  if (
+                    e.target.value.match(/^[0-9]+$/) ||
+                    e.target.value === ""
+                  ) {
+                    setCkyc(e.target.value.slice(0, 14));
                   }
-                }} />
-                <label className="label">Enter your Father Name</label>
-              </div>
-            </>
-            }
-            
-          </div>
-         <div className="text-center">
-     {  type!=="pan"&&  <button className="facingLink" onClick={()=> window.location.href = "/aadhar"}>Facing Issue ?</button>}
-         </div>
-         
-          <div className="button-wrapper text-center">
-            <button className="btn" data-testid="view-more" onClick={(e) => {
-              if (type === "pan") {
-                handlePanVerify()
-              }
-              else {
-                handleSubmitPanDetails()
-              }
-            }} disabled={!(pan?.match(panCardRegex)  && dob && (isRequiredFatherName ? fatheName.length > 2 : true))} >
+                }}
+              />
+              <label className="label">Enter CKYC Number</label>
+            </div>
 
+            {isRequiredFatherName && type === "pan" && (
+              <>
+                <h2>Father Name</h2>
+                <div className="input-wrapper">
+                  <input
+                    className="input"
+                    name="pan"
+                    type="text"
+                    data-testid="pan"
+                    placeholder=" "
+                    value={fatheName}
+                    onChange={(e) => {
+                      if (e.target.value?.match(textOnly)) {
+                        setfatherName(e.target.value.slice(0, 70));
+                      }
+                    }}
+                  />
+                  <label className="label">Enter your Father Name</label>
+                </div>
+              </>
+            )}
+          </div>
+          <div className="text-center">
+            {type !== "pan" && (
+              <button
+                className="facingLink"
+                onClick={() => (window.location.href = "/aadhar")}
+              >
+                Facing Issue ?
+              </button>
+            )}
+          </div>
+
+          <div className="button-wrapper text-center">
+            <button
+              className="btn"
+              data-testid="view-more"
+              onClick={(e) => {
+                if (type === "pan") {
+                  handlePanVerify();
+                } else {
+                  handleSubmitPanDetails();
+                }
+              }}
+              disabled={
+                !(
+                  pan?.match(panCardRegex) &&
+                  dob &&
+                  (isRequiredFatherName ? fatheName.length > 2 : true)
+                )
+              }
+            >
               Continue
             </button>
           </div>
@@ -285,10 +339,7 @@ const ProvidePan = () => {
         ) : null}
 
         <Footer />
-
-
       </section>
-
     </>
   );
 }

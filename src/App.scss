@@ -1885,3 +1885,212 @@ font-weight: 400;
   .optional{
     color:rgba(21, 39, 69, 0.4);
   }
+  .custom-ui {
+    width: 50vw !important;
+    margin: auto !important;
+    background: #f3f4f5;
+    height: fit-content;
+    box-shadow: -10px -10px 25px #ffffff, 10px 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 40px;
+    font-family: "Assistant", sans-serif;
+    color: #152745;
+    text-align: center;
+    padding: 20px !important;
+  }
+    .errMessage {
+      padding: 20px;
+      /* display: inline-block; */
+      /* height: fit-content;
+     line-height: 10px; */
+      font-family: "Assistant", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 14px;
+      text-align: center;
+      color: #152745;
+    }
+  
+    .setBtnCss {
+      float: right;
+      width: 100.48px;
+      height: 46.53px;
+      background: #fc6603;
+      border-radius: 75px;
+      font-family: "Assistant", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16.2109px;
+      line-height: 28px;
+      /* identical to box height, or 171% */
+      color: #ffffff;
+      border: none;
+      outline: none;
+    }
+
+        did-floating-label-content {
+          /* border :0.5px solid rgba(112, 112, 112, 1); */
+          position: relative;
+    
+          width: 100%;
+        }
+    
+        .did-floating-label {
+          color: #000;
+          font-size: 13px;
+          font-weight: normal;
+          position: absolute;
+          pointer-events: none;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          padding: 0 5px;
+          background: transparent;
+          width: 90%;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          transition: 0.2s ease all;
+          -moz-transition: 0.2s ease all;
+          -webkit-transition: 0.2s ease all;
+        }
+    
+        .did-floating-label p {
+          text-align: center;
+          margin-bottom: 5px;
+          width: 33%;
+        }
+    
+        .did-floating-label p+p {
+          border-left: 2px solid #000;
+        }
+    
+        .did-floating-input {
+          width: 100% !important;
+          padding: 13px 30px;
+        }
+    
+        .did-floating-input:focus {
+          outline: none;
+        }
+    
+        .did-floating-input:focus~.did-floating-label {
+          display: none;
+        }
+    
+        .did-floating-input:not(:placeholder-shown)~.did-floating-label {
+          display: none;
+        }
+
+        .rounded-lg{
+          border-radius: 12px !important;
+        }
+
+        .input {
+                  font-family: "Assistant", sans-serif;
+                  font-style: normal;
+                  font-weight: 400;
+                  font-size: 18px;
+                  color: #152745;
+                  width: 90%;
+                  height: 63px;
+                  padding: 13px;
+                  background: #fff;
+                  border: 1px solid rgba(21, 39, 69, 0.30);
+                  border-radius: 43px;
+                  margin-bottom: 0px;
+                  box-sizing: border-box;
+                }
+  
+  .flex{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+  }
+
+  .ant-form-item-extra {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 17px;
+  text-align: center;
+  color: #152745;
+  opacity: 0.4;
+}
+.did-floating-label-content {
+  /* border :0.5px solid rgba(112, 112, 112, 1); */
+  position: relative;
+
+  width: 100%;
+}
+
+.text-left{
+  text-align: left !important;
+}
+.headerDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.headerDiv2 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  justify-content: space-between !important;
+}
+.header .head-container .heading-sc {
+  padding: 10px 0px 10px;
+}
+
+.header .head-container .heading {
+  text-align: center;
+}
+.adharHead {
+  margin-right: -15px;
+}
+.justify-content-start{
+  justify-content: flex-start !important;
+}
+.verifyfont{
+      font-family: "Assistant", sans-serif !important;
+        line-height: 1.1 !important;
+        margin: 0;
+        color: #152745 !important;
+        font-weight: 700 !important;
+}
+.margin-b{
+  margin-bottom: 20px !important;
+}
+.ant-form-item-extra {
+  margin-top: 20px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 17px;
+  text-align: center;
+  color: #152745;
+  opacity: 0.4;
+  padding-bottom: 1.5rem !important;
+}
+.did-floating-input{
+  padding: 13px 30px !important;
+}
+.imgDiv {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 64px;
+  img{
+    height:27px;
+    width:87px;
+  }
+}
+.opacity-50{
+  opacity: 0.5;
+}
+.opacity-100{
+  opacity: 1;
+}
+.font-12{
+  font-size: 12px !important;
+}

@@ -123,6 +123,29 @@ export const checkFatherName = (tokenValue) => {
   });
 };
 
+
+export const aadhaarSendOtp = ( data ) => {
+  let url =
+    `${API_ENDPOINT}/api/ekyc/aadhaar_send_otp/`;
+    let config = {
+      headers: {
+          Authorization :  token,
+          'Content-Type': 'application/json'
+  
+        }
+    }
+  return new Promise((resolve, reject) => {
+      axios.post(url, data, config
+      )
+      .then((res) => {
+          return resolve(res)
+      })
+      .catch((err) => {
+          return reject(err.response)
+      })
+    });
+};
+
 export const uploadDocsToS3 = (url, formData) => {
   const instance = axios.create();
   delete instance.defaults.headers.common['Authorization'];

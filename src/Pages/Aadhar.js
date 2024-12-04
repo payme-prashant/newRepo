@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+
 import aadharImg from "../Assets/aadhar.png";
 import Footer from './Component/Footer';
 import Header from "./Component/Header";
 
+import { useLocation } from "react-router-dom";
 import 'reactjs-popup/dist/index.css';
 
 import { useNavigate } from "react-router-dom";
@@ -19,7 +21,9 @@ const Aadhar = () => {
   const [otpPage, setOtpPage] = useState(true)
   const[client_id,setClient_id]=useState('')
   const[aadhar,setAadhar]=useState(false)
-
+  const location = useLocation();
+  const { state } = location || {};
+console.log(state, "de")
 
 useEffect(()=>{
   
@@ -37,9 +41,9 @@ useEffect(()=>{
 
       }
   
-    let data ={
-      aadhaar_no:adhar?adhar:aadhar
-    }
+    let data = {
+      aadhaar_no: adhar ? adhar : state?.otpDetail.aadhaarNumber,
+    };
     setLoader(true)
     sendAdharOtp(data).then((res) => {
       setClient_id(res.data.data.client_id)

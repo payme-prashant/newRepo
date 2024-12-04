@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
-import ValidateOtp from './Component/AadharCommon/ValidateOtp'
-import Header from './Component/Header'
+import { useLocation, useNavigate } from 'react-router-dom'
 import otpImg from "../Assets/otp.png"
-import Footer from './Component/Footer'
-import { ckycResendOtp, ckycVerifyOtp, CLOSING_ENDPOINT } from '../service/service'
-import { handleError } from './Common/ToastMsg'
+import { ckycResendOtp, ckycVerifyOtp } from '../service/service'
 import { Loader } from './Common/Loader'
-import { useLocation } from 'react-router-dom'
+import { handleError } from './Common/ToastMsg'
+import ValidateOtp from './Component/AadharCommon/ValidateOtp'
+import Footer from './Component/Footer'
+import Header from './Component/Header'
 
 const CkycOtp = () => {
     const token = localStorage.getItem("token")
     const {state}= useLocation()
     const [loader, setLoader] = useState(false)
-
+    const navigate = useNavigate()
 
     const handleValidateCkycOtp = (otp) => {
         setLoader(true)
@@ -22,7 +22,8 @@ const CkycOtp = () => {
 
         ckycVerifyOtp(reqBody,token).then((res) => {
             console.log(res)
-            window.location.href = CLOSING_ENDPOINT
+             navigate("/selfie?type=kyc");
+            //window.location.href = CLOSING_ENDPOINT
             setLoader(false)
         }).catch((err) => {
             setLoader(false);
@@ -34,7 +35,7 @@ const CkycOtp = () => {
     }
     const handlegeResendOtp = () => {
         ckycResendOtp(token).then((res) => {
-
+           
         }).catch((err) => {
             setLoader(false);
             handleError(err)

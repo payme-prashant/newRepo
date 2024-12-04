@@ -3,9 +3,23 @@ const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT
 const PAYME_API_ENDPOINT = process.env.REACT_APP_PAYME_API_ENDPOINT
 export const CLOSING_ENDPOINT = process.env.REACT_APP_CLOSING_URL
 
-const token = localStorage.getItem("token");
 
 
+
+const urlParams = new URLSearchParams(window.location.search);
+const tokenS = urlParams.get("token");
+let token = ""
+if (tokenS) {
+  localStorage.setItem("token", tokenS);
+  const token = tokenS;
+}
+else{
+  const token = localStorage.getItem("token");
+}
+
+
+token = localStorage.getItem("token")? localStorage.getItem("token") : tokenS;
+  
 const headersApplicationJson = {
   "Content-Type": "application/json",
 

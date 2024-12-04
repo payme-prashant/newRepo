@@ -116,7 +116,7 @@ const ProvidePan = () => {
   }, [])
   const handleStatus = () => {
     setLoader(true)
-    getStatusData(token).then((res) => {
+    getStatusData().then((res) => {
       console.log("ppppppp", res.data)
       console.log(res?.data?.pan_card_number, "card number");
       localStorage.setItem("user_id", res?.data?.user_id || false)

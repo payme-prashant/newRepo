@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { confirmAlert } from "react-confirm-alert";
+import { useNavigate } from "react-router-dom";
 import { Loader } from "../../src/Pages/Common/Loader";
 import adhar from "../Assets/adhar.png";
 import sslImage from "../Assets/sslCertificate.png";
@@ -9,7 +10,7 @@ const AadhaarNumber = (props) => {
   const [aadhaar_no, setaadhaar_no] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [adharNoData, setadharNoData] = useState("");
-
+    const navigate  = useNavigate()
   //const navigate =  useNavigate()
   const [state, setState] = useState({
     aadhaarNumber: "",
@@ -42,12 +43,13 @@ const AadhaarNumber = (props) => {
      aadhaarSendOtp(data)
         .then((res) => {
           let detail = {
-            aadhaarNumber: adhar_number,
+            aadhaarNumber: adharNoData,
             client_id: res.data.data.client_id,
           };
           console.log(aadhaarNumber, "3adhar_number");
           setLoading(false);
-          props.history.push("/aadhar", { otpDetail: detail });
+          navigate("/aadhar", { state: { otpDetail: detail } });
+          //props.history.push("/aadhar", { otpDetail: detail });
         })
         .catch((err) => {
             alert(err.data.error)

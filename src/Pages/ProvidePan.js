@@ -271,7 +271,7 @@ const ProvidePan = () => {
             {type !== "pan" && (
               <button
                 className="facingLink"
-                onClick={() => (window.location.href = "/aadhar")}
+                onClick={() => (window.location.href = "/adharnumber")}
               >
                 Facing Issue ?
               </button>

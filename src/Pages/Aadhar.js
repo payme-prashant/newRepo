@@ -62,19 +62,19 @@ useEffect(()=>{
       handleError(err)
     });
   }
-
+  console.log(state?.otpDetail?.client_id, "client_id");
   const handleValidateAdharOtp = (otp) => {
     //customMixPanel("Interacted_Adhaar_OTP","Submit")
     let data = {
       otp: otp,
-      client_id: client_id
+      client_id: client_id? client_id : state?.otpDetail?.client_id
     }
     setLoader(true);
     verifyAdharOtp(data).then((res) => {
       setLoader(false);
 
       if(res?.data?.status==="success"){
-        navigate("/?type=pan")
+        navigate("/selfie?type=kyc");
       }
       else{
         ToastMsg(res?.data?.message,"error")

@@ -54,6 +54,8 @@ const ProvidePan = () => {
   const handleSubmitPanDetails = () => {
 
     setLoader(true)
+    localStorage.setItem("pan", pan)
+    localStorage.setItem("dob", dob)
     let data = {
       pan_no: pan,
       dob: dob,
@@ -62,7 +64,8 @@ const ProvidePan = () => {
 
   
       if (res.data.phone_verification) {
-        window.location.href = CLOSING_ENDPOINT;
+        window.location.href = "/selfie?type=kyc"
+        //window.location.href = CLOSING_ENDPOINT;
       }
       else {
         setLoader(false)
@@ -122,6 +125,7 @@ const ProvidePan = () => {
     setLoader(true)
     getStatusData().then((res) => {
       console.log("ppppppp", res.data)
+      
       console.log(res?.data?.pan_card_number, "card number");
       localStorage.setItem("user_id", res?.data?.user_id || false)
       localStorage.setItem("user", res?.data || false);

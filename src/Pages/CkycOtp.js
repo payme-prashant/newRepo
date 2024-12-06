@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import otpImg from "../Assets/otp.png"
-import { ckycResendOtp, ckycVerifyOtp } from '../service/service'
+import { ckycResendOtp, ckycVerifyOtp, createCkyc } from '../service/service'
 import { Loader } from './Common/Loader'
 import { handleError } from './Common/ToastMsg'
 import ValidateOtp from './Component/AadharCommon/ValidateOtp'
@@ -22,9 +22,17 @@ const CkycOtp = () => {
 
         ckycVerifyOtp(reqBody,token).then((res) => {
             console.log(res)
-             navigate("/selfie?type=kyc");
+            createCkyc({pan_no:localStorage.getItem("pan"),dob:localStorage.getItem('dob')},token).then((res)=>{
+                setLoader(false);
+                 navigate("/selfie?type=kyc");
+
+            }).catch((err)=>{
+                setLoader(false);
+
+            })
+            
             //window.location.href = CLOSING_ENDPOINT
-            setLoader(false)
+            
         }).catch((err) => {
             setLoader(false);
             handleError(err)

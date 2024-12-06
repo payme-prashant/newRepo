@@ -66,8 +66,12 @@ const ProvidePan = () => {
       }
       else {
         setLoader(false)
-        navigate("/ckyc-otp",{state:{phone_number:res.data.phone_number}})
-        window.location.href = "/ckyc-otp";
+        //navigate("/ckyc-otp",{state:{phone_number:res.data.phone_number}})
+        //window.location.href = "/ckyc-otp";
+        
+        navigate("/selfie?type=kyc", {
+          state: { phone_number: res.data.phone_number },
+        });
       }
 
     }).catch((err) => {

@@ -37,6 +37,15 @@ export const createCkyc = (params, tokenValue) => {
     }
   });
 };
+export const createCkycVeri = (params, tokenValue) => {
+  const url = `${API_ENDPOINT}/api/ekyc/ckyc/verification/`;
+  return axios.post(url, params, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: tokenValue ? tokenValue : token,
+    },
+  });
+};
 
 export const ckycVerifyOtp = (data, token) => {
   let url =

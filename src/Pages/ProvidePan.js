@@ -31,7 +31,7 @@ const ProvidePan = () => {
   const [ckyc, setCkyc] = useState("")
   const [isRequiredFatherName, setIsRequiredFatherName] = useState(false)
   const [fatheName, setfatherName] = useState("")
-
+  //const [ckycNumber, setCkycNumber] = useState("")
 
   const openDatePicker = () => {
     setDateValue(true);
@@ -56,8 +56,9 @@ const ProvidePan = () => {
     localStorage.setItem("dob", dob)
     let data = {
       pan_no: pan,
-      dob: dob,
-    }
+      dob: moment(dob).format("YYYY-MM-DD"),
+      ckycNumber: ckyc,
+    };
     createCkycVeri(data, token)
       .then((res) => {
         if (res.data.phone_verification) {

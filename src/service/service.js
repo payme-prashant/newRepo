@@ -98,6 +98,7 @@ export const getPostSignedUrl = (params) => {
 
 
 
+
 export const verifySelfie = (params) => {
   const url = `${API_ENDPOINT}/api/ekyc/selfie/verify/`
   return axios.post(url, params, {

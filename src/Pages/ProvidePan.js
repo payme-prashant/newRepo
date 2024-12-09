@@ -7,13 +7,11 @@ import { FaCalendar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import panimage from "../Assets/panimg.png";
 import { alphaNumeric, panCardRegex, textOnly } from "../Helper/regex";
-import { checkFatherName, CLOSING_ENDPOINT, createCkyc, getStatusData, panVerify } from "../service/service";
+import { checkFatherName, CLOSING_ENDPOINT, createCkycVeri, getStatusData, panVerify } from "../service/service";
 import { Loader } from "./Common/Loader";
 import { handleError } from "./Common/ToastMsg";
 import Footer from './Component/Footer';
 import Header from "./Component/Header";
-
-
 mixpanel.init(process.env.REACT_APP_MIX_PANEL_TOKEN,{debug:true})
 
 const ProvidePan = () => {
@@ -60,34 +58,31 @@ const ProvidePan = () => {
       pan_no: pan,
       dob: dob,
     }
-    createCkyc(data, token).then((res) => {
+    createCkycVeri(data, token)
+      .then((res) => {
+        if (res.data.phone_verification) {
+          window.location.href = "/selfie?type=kyc";
+          //window.location.href = CLOSING_ENDPOINT;
+        } else {
+          setLoader(false);
+          //navigate("/ckyc-otp",{state:{phone_number:res.data.phone_number}})
+          //window.location.href = "/ckyc-otp";
 
-  
-      if (res.data.phone_verification) {
-        window.location.href = "/selfie?type=kyc"
-        //window.location.href = CLOSING_ENDPOINT;
-      }
-      else {
-        setLoader(false)
-        //navigate("/ckyc-otp",{state:{phone_number:res.data.phone_number}})
-        //window.location.href = "/ckyc-otp";
-        
-        navigate("/selfie?type=kyc", {
-          state: { phone_number: res.data.phone_number },
-        });
-      }
+          navigate("/selfie?type=kyc", {
+            state: { phone_number: res.data.phone_number },
+          });
+        }
+      })
+      .catch((err) => {
+        if (err?.response?.status === 412) {
+          handleError(err);
+        } else {
+          //window.location.href = "/aadhar";
+        }
 
-    }).catch((err) => {
-      if(err?.response?.status===412){
-        handleError(err)
-      }
-      else{
-        //window.location.href = "/aadhar";
-      }
-
-      setLoader(false)
-      console.log(err);
-    });
+        setLoader(false);
+        console.log(err);
+      });
   }
 
   const handlePanVerify = () => {

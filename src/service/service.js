@@ -100,7 +100,7 @@ export const getPostSignedUrl = (params) => {
 
 
 export const verifySelfie = (params) => {
-  const url = `${API_ENDPOINT}/api/ekyc/ekyc/selfie_verify/`;
+  const url = `${API_ENDPOINT}/api/ekyc/ckyc/selfie_verify/`;
   return axios.post(url, params, {
     headers: headersApplicationJson,
   });

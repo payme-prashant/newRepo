@@ -94,7 +94,7 @@ const Selfie = () => {
 
   const handleVerifySelfie = () => {
    
-    const reqBody =  {image_path: image_path }
+    const reqBody = { ckyc_image_path: image_path };
 
 
     verifySelfie(reqBody).then((res) => {

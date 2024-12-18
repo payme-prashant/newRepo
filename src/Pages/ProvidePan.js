@@ -195,7 +195,7 @@ const ProvidePan = () => {
             />
           </div>
           <div className="mid-section">
-            <h2>Your PAN</h2>
+            <h2>Your PAN Number</h2>
             <div className="input-wrapper">
               <input
                 className="input"
@@ -227,7 +227,7 @@ const ProvidePan = () => {
             </div>
             <h2>
               CKYC Number{" "}
-              <span class="optional" >(optional)</span>
+              <span class="optional" >(Optional)</span>
             </h2>
             <div className="input-wrapper">
               <input
@@ -321,7 +321,7 @@ const ProvidePan = () => {
               placeholderText="DD-MM-YYYY"
               maxDate={moment().subtract(18, "years")._d}
             >
-              <div className="small-btn-wrapper flex space-between">
+              <div className="small-btn-wrapper flex-row flex space-between">
                 <button
                   className="small-btn white-small-btn"
                   onClick={handleCancle}

@@ -52,7 +52,7 @@ const AadhaarNumber = (props) => {
           //props.history.push("/aadhar", { otpDetail: detail });
         })
         .catch((err) => {
-            alert(err.data.error)
+        //alert(err.data.error)
           confirmAlert({
             customUI: ({ onClose }) => {
               return (
@@ -156,7 +156,7 @@ const AadhaarNumber = (props) => {
                 <br />
                 <br />
                 <div className=" flex">
-                  <h2 className="text-left margin-b">Your Aadhaar</h2>
+                  <h2 className="text-left margin-b">Your Aadhaar Number</h2>
                   <div class="did-floating-label-content rounded-lg">
                     <input
                       data-testid="inputBox"
@@ -171,7 +171,7 @@ const AadhaarNumber = (props) => {
                 </div>
                 <br />
                 <p className="ant-form-item-extra px-3 pt-3">
-                  Please ensure your number is registered with Aadhaar
+                  Please ensure your mobile number is linked with Aadhaar
                 </p>
               </div>
             </div>
